@@ -25,5 +25,12 @@ public class BaseController {
         return "success";
     }
 
+    @RequestMapping("api/githubWebhook1")
+    @ResponseBody
+    public Object githubWebhook1(String content){
+        System.out.println(content);
+        return "success";
+    }
+
 
 }
