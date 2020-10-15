@@ -1,43 +1,39 @@
 package com.test;
 
 
-import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Controller
+@RestController
 public class BaseController {
 
     @RequestMapping("checkDeploy")
-    @ResponseBody
     public Object checkDeploy(){
         return "success";
     }
 
-    @RequestMapping("api/githubWebhook")
-    @ResponseBody
-    public Object githubWebhook(@RequestBody JSONObject content){
-        System.out.println(content);
+    @RequestMapping("test")
+    public Object test(){
+        System.out.println(System.currentTimeMillis());
         return "success";
     }
 
-    @RequestMapping("api/githubWebhook1")
-    @ResponseBody
-    public Object githubWebhook1(String content){
-        System.out.println(content);
-        return "success";
+    @RequestMapping("test1")
+    public Object test1(String name, Integer age){
+        System.out.println(name);
+        System.out.println(age);
+        return "test1";
     }
 
-    @RequestMapping("api/githubWebhook2")
-    @ResponseBody
-    public Object githubWebhook2(){
-        System.out.println("githubWebhook2");
-        return "success";
+    @RequestMapping(value="test2", method = RequestMethod.POST)
+    public Object test2(String name, Integer age){
+        System.out.println(name);
+        System.out.println(age);
+        return "test2";
     }
-
 
 }
